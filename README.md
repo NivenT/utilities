@@ -16,3 +16,19 @@ Json | A type for storing an arbitrary JSON value.
 Path | A type representating a path in an OS-independent way (disclaimer: not tested on Windows)
 
 You can also check out the [documentation](https://nivent.github.io/utilities/html/index.html) for even more information.
+
+## How to build/run tests
+```bash
+git clone https://github.com/NivenT/utilities
+cd utilities
+mkdir build
+cd build
+cmake ../
+make
+```
+
+After that, to run all the tests you just need to call `make test`. The tests are built inside `tests_bin`, so if you want to run one individually, then do something like the following (from inside the build folder)
+```bash
+cd tests_bin/path
+./path_tests
+```
