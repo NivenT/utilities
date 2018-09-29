@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['modexists',['ModExists',['../d4/d54/structnta_1_1check_1_1ModExists.html',1,'nta::check']]],
-  ['mulexists',['MulExists',['../d0/df3/structnta_1_1check_1_1MulExists.html',1,'nta::check']]]
+  ['lesserexists',['LesserExists',['../d5/d35/structutils_1_1check_1_1LesserExists.html',1,'utils::check']]],
+  ['lshiftexists',['LShiftExists',['../d8/d8a/structutils_1_1check_1_1LShiftExists.html',1,'utils::check']]]
 ];

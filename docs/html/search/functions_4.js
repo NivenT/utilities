@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['jsonnum',['JsonNum',['../d1/d23/classnta_1_1utils_1_1JsonNum.html#a4c16668854577689d9ae6e6a9f7fd62d',1,'nta::utils::JsonNum']]]
+  ['get',['get',['../d1/dc9/structutils_1_1TypeInfo.html#a34bd0dde5f01ca6fcdb0781b3b960bb9',1,'utils::TypeInfo::get()'],['../d6/d89/classutils_1_1TypeMap.html#a620c2fdf50f172752057efbbed50fc30',1,'utils::TypeMap::get()']]]
 ];

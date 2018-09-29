@@ -1,7 +1,8 @@
 var searchData=
 [
-  ['json',['Json',['../d1/d3d/classnta_1_1utils_1_1Json.html',1,'nta::utils']]],
-  ['jsonnum',['JsonNum',['../d1/d23/classnta_1_1utils_1_1JsonNum.html',1,'nta::utils::JsonNum'],['../d1/d23/classnta_1_1utils_1_1JsonNum.html#a4c16668854577689d9ae6e6a9f7fd62d',1,'nta::utils::JsonNum::JsonNum()']]],
-  ['jsontoken',['JsonToken',['../d5/d81/structnta_1_1utils_1_1Json_1_1JsonToken.html',1,'nta::utils::Json']]],
-  ['jsontoken_2e_5f_5funnamed_5f_5f',['JsonToken.__unnamed__',['../d1/d3d/classnta_1_1utils_1_1Json.html#d6/d05/unionnta_1_1utils_1_1Json_1_1JsonToken_8____unnamed____',1,'nta::utils::Json']]]
+  ['increxists',['IncrExists',['../d4/df2/structutils_1_1check_1_1IncrExists.html',1,'utils::check']]],
+  ['is_5fpointer',['is_pointer',['../d1/dc9/structutils_1_1TypeInfo.html#a7197345902a9a0ab30bc9b0fd2c3f324',1,'utils::TypeInfo']]],
+  ['is_5freference',['is_reference',['../d1/dc9/structutils_1_1TypeInfo.html#a81771ae8cb9f18c74f3c9f8a0c0b8433',1,'utils::TypeInfo']]],
+  ['is_5fsmall',['is_small',['../d1/dc9/structutils_1_1TypeInfo.html#ac3b18e63bc35990e427d1af9f5572dd3',1,'utils::TypeInfo']]],
+  ['iterator',['iterator',['../d8/d57/classutils_1_1Json_1_1iterator.html',1,'utils::Json::iterator&lt; c &gt;'],['../dc/d78/classutils_1_1Path_1_1iterator.html',1,'utils::Path::iterator']]]
 ];

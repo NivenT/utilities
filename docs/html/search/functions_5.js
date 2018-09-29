@@ -1,7 +1,6 @@
 var searchData=
 [
-  ['lex_5fbool',['lex_bool',['../d1/d3d/classnta_1_1utils_1_1Json.html#af563232c6a9334fe69f05ae33ee76573',1,'nta::utils::Json']]],
-  ['lex_5fnull',['lex_null',['../d1/d3d/classnta_1_1utils_1_1Json.html#aea0272293c585f0d30811afe6a43917b',1,'nta::utils::Json']]],
-  ['lex_5fnumber',['lex_number',['../d1/d3d/classnta_1_1utils_1_1Json.html#a85d932ecf9fc69f93af5da7349a8e265',1,'nta::utils::Json']]],
-  ['lex_5fstring',['lex_string',['../d1/d3d/classnta_1_1utils_1_1Json.html#a085ef4e12b6ac83ef239425037b5bf73',1,'nta::utils::Json']]]
+  ['is_5fpointer',['is_pointer',['../d1/dc9/structutils_1_1TypeInfo.html#a7197345902a9a0ab30bc9b0fd2c3f324',1,'utils::TypeInfo']]],
+  ['is_5freference',['is_reference',['../d1/dc9/structutils_1_1TypeInfo.html#a81771ae8cb9f18c74f3c9f8a0c0b8433',1,'utils::TypeInfo']]],
+  ['is_5fsmall',['is_small',['../d1/dc9/structutils_1_1TypeInfo.html#ac3b18e63bc35990e427d1af9f5572dd3',1,'utils::TypeInfo']]]
 ];

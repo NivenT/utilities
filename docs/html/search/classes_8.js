@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['negexists',['NegExists',['../dd/db7/structnta_1_1check_1_1NegExists.html',1,'nta::check']]],
-  ['nop',['Nop',['../d7/d10/namespacenta_1_1check.html#de/d20/structnta_1_1check_1_1Nop',1,'nta::check']]],
-  ['notexists',['NotExists',['../de/dce/structnta_1_1check_1_1NotExists.html',1,'nta::check']]]
+  ['modexists',['ModExists',['../d6/d00/structutils_1_1check_1_1ModExists.html',1,'utils::check']]],
+  ['mulexists',['MulExists',['../d3/d1b/structutils_1_1check_1_1MulExists.html',1,'utils::check']]]
 ];

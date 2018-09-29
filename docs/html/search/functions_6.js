@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['merge',['merge',['../d1/d3d/classnta_1_1utils_1_1Json.html#ac33a8a65bdfaff7c365f99c9ca71eeab',1,'nta::utils::Json']]]
+  ['jsonnum',['JsonNum',['../d3/d2d/classutils_1_1JsonNum.html#a0f5642039d9b06afcb7ff0438b0b1664',1,'utils::JsonNum']]]
 ];

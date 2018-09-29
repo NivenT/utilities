@@ -90,6 +90,12 @@ namespace utils {
         UTILS_OP_CHECKER(Greater, >)
         UTILS_OP_CHECKER(Lesser, <)
     }
+    /// A generic class for creating wrappers around (non-reference) types
+    ///
+    /// Automatically inherts all operations available to the inner type T.
+    /// This includes the ability to print it using e.g. cout<<
+    ///
+    /// usage: using Name = utils::Wrapper<std::string, struct NameTag>
     template<typename T, typename TAG>
     class Wrapper {
     public:
