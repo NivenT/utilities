@@ -17,7 +17,7 @@ Path | A type representating a path in an OS-independent way (disclaimer: not te
 
 You can also check out the [documentation](https://nivent.github.io/utilities/html/index.html) for even more information.
 
-## How to build/run tests
+## How to run tests
 ```bash
 git clone https://github.com/NivenT/utilities
 cd utilities
