@@ -1,4 +1,5 @@
 #include <iostream>
+#include <unordered_set>
 
 #include <Wrapper.h>
 #include <common.h>
@@ -6,27 +7,20 @@
 using namespace std;
 using namespace utils;
 
-UTILS_CREATE_WRAPPER(Inches, int)
-UTILS_CREATE_WRAPPER(Feet, int)
-UTILS_CREATE_WRAPPER(Name, string)
+using Inches = Wrapper<int, struct InchesTag>;
+using Feet = Wrapper<int, struct FeetTag>;
+using Name = Wrapper<string, struct NameTag>;
 
 int main(int argc, char* argv[]) {
     cout<<"Running Wrapper tests..."<<endl;
 
-    assert(check::is_wrapper<Inches>::value);
-    assert(check::is_wrapper<Feet>::value);
-    assert(check::is_wrapper<Name>::value);
-    assert(!check::is_wrapper<std::string>::value);
-    assert(!check::is_wrapper<int>::value);
-
     Inches a = 12;
     Feet b = 1;
     Name c("Steve");
-
     // You can cout<< a wrapper
-    assert(utils::to_string(a) == "Inches(12)");
-    assert(utils::to_string(b) == "Feet(1)");
-    assert(utils::to_string(c) == "Name(Steve)");
+    assert(utils::to_string(a) == "12");
+    assert(utils::to_string(b) == "1");
+    assert(utils::to_string(c) == "Steve");
 
     // Confirms that you can't check for equality between Inches and Feet even though they wrap the same type
     if ((int)check::EqualsExists<Inches, Feet>::value == 1) {
@@ -64,27 +58,27 @@ int main(int argc, char* argv[]) {
     assert(b < 10);
     assert(a <= 45);
     assert(b >= 8);
-
+    
     assert(c + string(" Rogers") == Name("Steve Rogers"));
     assert(c < Name("Tony"));
-    // As a quirk of the implementation, you get an empty wrapper whenever
-    // an invalid operation is performed
-    //assert(c - Name("Uh-oh") == Name());
-    //assert(c * Name("Nope") == Name());
-    //assert((c & Name("Illegal")) == Name());
 
     c += string("n Strange");
-    assert(utils::to_string(c) == "Name(Steven Strange)");
+    assert(utils::to_string(c) == "Steven Strange");
     assert(c == c.to_inner());
 
     // Issue with commas in assert's, so this check is written in a roundabout way
     if (!is_same<Name::inner, string>::value) {
         assert(false);
     }
-    if (!is_same<decltype(c.to_inner()), string>::value) {
-        assert(false);
-    }
 
+    // Wrappers can be hashed as well
+    unordered_set<Inches> set;
+    set.insert(3);
+    set.insert(Inches(5));
+
+    assert(set.size() == 2);
+    assert(*set.find(3) == Inches(3));
+    
     cout<<"Tests passed"<<endl;
     return 0;
 }

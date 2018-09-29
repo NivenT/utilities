@@ -10,9 +10,9 @@ namespace utils {
     /// Struct for storing basic information about a type used by TypeMap
     struct TypeInfo {
     private:
-        static const std::size_t UTILS_TYPEINFO_POINTER_BIT   = 0b0000'0001;
-        static const std::size_t UTILS_TYPEINFO_SMALL_BIT     = 0b0000'0010;
-        static const std::size_t UTILS_TYPEINFO_REFERENCE_BIT = 0b0000'0100;
+        static const std::size_t TYPEINFO_POINTER_BIT   = 0b0000'0001;
+        static const std::size_t TYPEINFO_SMALL_BIT     = 0b0000'0010;
+        static const std::size_t TYPEINFO_REFERENCE_BIT = 0b0000'0100;
 
         TypeInfo() {}
     public:
@@ -23,9 +23,9 @@ namespace utils {
         static const TypeInfo get() {
             TypeInfo ret;
             ret.hash = typeid(T).hash_code();
-            ret.flags |= std::is_pointer<T>::value ? UTILS_TYPEINFO_POINTER_BIT : 0;
-            ret.flags |= sizeof(T) <= sizeof(void*) ? UTILS_TYPEINFO_SMALL_BIT : 0;
-            ret.flags |= std::is_reference<T>::value ? UTILS_TYPEINFO_REFERENCE_BIT : 0;
+            ret.flags |= std::is_pointer<T>::value ? TYPEINFO_POINTER_BIT : 0;
+            ret.flags |= sizeof(T) <= sizeof(void*) ? TYPEINFO_SMALL_BIT : 0;
+            ret.flags |= std::is_reference<T>::value ? TYPEINFO_REFERENCE_BIT : 0;
 
             bool call_delete = !ret.is_reference() && !ret.is_small();
             ret.destructor = [call_delete](void* o) {
@@ -43,15 +43,15 @@ namespace utils {
         }
         /// Is this a pointer type
         bool is_pointer() const {
-            return flags & UTILS_TYPEINFO_POINTER_BIT;
+            return flags & TYPEINFO_POINTER_BIT;
         }
         /// Returns false if this type is more bytes than a pointer
         bool is_small() const {
-            return flags & UTILS_TYPEINFO_SMALL_BIT;
+            return flags & TYPEINFO_SMALL_BIT;
         }
         /// Is this a reference type
         bool is_reference() const {
-            return flags & UTILS_TYPEINFO_REFERENCE_BIT;
+            return flags & TYPEINFO_REFERENCE_BIT;
         }
 
         /// The type's unique hash code
