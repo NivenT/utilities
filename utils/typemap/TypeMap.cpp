@@ -11,8 +11,8 @@ namespace utils {
         } else if (info.is_small()) {
             info.destructor(&m_map[info]);
         } else {
-            // calls delete
             info.destructor(m_map[info]);
+            operator delete(m_map[info]);
         }
     }
     void TypeMap::erase(const TypeInfo& info) {

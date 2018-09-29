@@ -27,14 +27,9 @@ namespace utils {
             ret.flags |= sizeof(T) <= sizeof(void*) ? TYPEINFO_SMALL_BIT : 0;
             ret.flags |= std::is_reference<T>::value ? TYPEINFO_REFERENCE_BIT : 0;
 
-            bool call_delete = !ret.is_reference() && !ret.is_small();
-            ret.destructor = [call_delete](void* o) {
+            ret.destructor = [](void* o) {
                 using type = typename std::remove_reference<T>::type;
-                if (call_delete) {
-                    delete reinterpret_cast<type*>(o);
-                } else {
-                    reinterpret_cast<type*>(o)->~type();
-                }
+                reinterpret_cast<type*>(o)->~type();
             };
             return ret;
         }
