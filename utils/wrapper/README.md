@@ -1,6 +1,6 @@
 # Wrapper
 
-This provides a templated class for creating generic wrappers. The wrappers created this way automatically inherit all operations available to the wrapped (i.e. "inner") type. At the moment, the inner type cannot be a reference.
+This provides a templated class for creating generic wrappers. The wrappers created this way automatically inherit all operations available to the wrapped (i.e. "inner") type.
 
 ## Example Usuage
 ```C++
@@ -36,3 +36,4 @@ int main() {
 ## Details
 * Wrappers must be constructed explicitly so `Feet f = 10` will cause the compiler to yell at you.
 * `Wrapper<T, TAG>::inner` will return the type being wrapped
+* At the moment, the inner type cannot be a reference.
