@@ -63,8 +63,10 @@ namespace utils {
 				} else {
 					#ifdef _UTILS_UNIX
 						m_node.e = readdir(m_node.d);
+						if (!m_node.e) closedir(m_node.d);
 					#elif _UTILS_WINDOWS
 						if (FindNextFile(m_node.h, &m_node.d) == 0) {
+							FindClose(m_node.h);
 							m_path = nullptr;
 						}
 					#endif
