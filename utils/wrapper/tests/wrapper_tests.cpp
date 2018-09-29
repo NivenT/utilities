@@ -14,8 +14,8 @@ using Name = Wrapper<string, struct NameTag>;
 int main(int argc, char* argv[]) {
     cout<<"Running Wrapper tests..."<<endl;
 
-    Inches a = 12;
-    Feet b = 1;
+    Inches a(12);
+    Feet b(1);
     Name c("Steve");
     // You can cout<< a wrapper
     assert(utils::to_string(a) == "12");
@@ -73,11 +73,11 @@ int main(int argc, char* argv[]) {
 
     // Wrappers can be hashed as well
     unordered_set<Inches> set;
-    set.insert(3);
+    set.insert(Inches(3));
     set.insert(Inches(5));
 
     assert(set.size() == 2);
-    assert(*set.find(3) == Inches(3));
+    assert(*set.find(Inches(3)) == Inches(3));
     
     cout<<"Tests passed"<<endl;
     return 0;

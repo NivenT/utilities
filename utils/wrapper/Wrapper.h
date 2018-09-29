@@ -24,7 +24,7 @@
 #define UTILS_IMPL_WRAPPER_OP(name, op)  \
     template<typename U, typename std::enable_if_t<check:: name##Exists_v<T, U>>* = nullptr> \
     Wrapper operator op(const U& rhs) const { \
-        return m_data op rhs;       \
+        return Wrapper(m_data op rhs);       \
     } \
     template<typename U, typename std::enable_if_t<check:: name##Exists_v<T, U>>* = nullptr> \
     Wrapper& operator op##=(const U& rhs) { \
@@ -35,18 +35,18 @@
 #define UTILS_IMPL_WRAPPER_SELF_OP(name, op) \
     template<typename T, typename TAG, typename std::enable_if_t<check:: name##Exists_v<T>>* = nullptr> \
     Wrapper<T, TAG> operator op(const Wrapper<T, TAG>& lhs, const Wrapper<T, TAG>& rhs) { \
-        return lhs.to_inner() op rhs.to_inner(); \
+        return Wrapper<T, TAG>(lhs.to_inner() op rhs.to_inner()); \
     } \
     template<typename T, typename TAG, typename std::enable_if_t<check:: name##Exists_v<T>>* = nullptr> \
     Wrapper<T, TAG>& operator op##=(Wrapper<T, TAG>& lhs, const Wrapper<T, TAG>& rhs) { \
         lhs.to_inner() = lhs.to_inner() op rhs.to_inner(); \
-        return lhs; \
+        return Wrapper<T, TAG>(lhs); \
     }
 
 #define UTILS_IMPL_WRAPPER_UNARY_OP(name, op, c) \
     template<typename T, typename TAG, typename std::enable_if_t<check:: name##Exists_v<T>>* = nullptr> \
     Wrapper<T, TAG> operator op(c Wrapper<T, TAG>& w) { \
-        return op w.to_inner(); \
+        return Wrapper<T, TAG>(op w.to_inner()); \
     }
 
 #define UTILS_IMPL_WRAPPER_COMP(name, op) \
@@ -103,7 +103,7 @@ namespace utils {
     private:
         T m_data;
     public:
-        Wrapper(T data = T()) : m_data(data) {}
+        explicit Wrapper(T data) : m_data(data) {}
         const T& to_inner() const { return m_data; }
         T& to_inner() { return m_data; }
         template<typename U>
