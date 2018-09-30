@@ -67,7 +67,6 @@ $(function() {
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pub-static-methods">Static Public Member Functions</a> &#124;
 <a href="#pri-attribs">Private Attributes</a> &#124;
-<a href="#friends">Friends</a> &#124;
 <a href="../../d0/d6e/classutils_1_1Path-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">utils::Path Class Reference</div>  </div>
@@ -104,11 +103,12 @@ Public Member Functions</h2></td></tr>
 <a class="el" href="../../d9/d63/classutils_1_1Path.html">Path</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/d63/classutils_1_1Path.html#a25d1904627042c0554de9f60b9e24b4d">resolve</a> () const</td></tr>
 <tr class="memdesc:a25d1904627042c0554de9f60b9e24b4d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns an absolute path equivalent to this. <br /></td></tr>
 <tr class="separator:a25d1904627042c0554de9f60b9e24b4d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a92f93cb66abc7b126055a88c3e9c7f6c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d9/d63/classutils_1_1Path.html">Path</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/d63/classutils_1_1Path.html#a92f93cb66abc7b126055a88c3e9c7f6c">parent</a> () const</td></tr>
-<tr class="memdesc:a92f93cb66abc7b126055a88c3e9c7f6c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the folder containing this path.  <a href="#a92f93cb66abc7b126055a88c3e9c7f6c">More...</a><br /></td></tr>
+<tr class="memitem:a92f93cb66abc7b126055a88c3e9c7f6c"><td class="memItemLeft" align="right" valign="top"><a id="a92f93cb66abc7b126055a88c3e9c7f6c"></a>
+<a class="el" href="../../d9/d63/classutils_1_1Path.html">Path</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/d63/classutils_1_1Path.html#a92f93cb66abc7b126055a88c3e9c7f6c">parent</a> () const</td></tr>
+<tr class="memdesc:a92f93cb66abc7b126055a88c3e9c7f6c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the folder containing this path. <br /></td></tr>
 <tr class="separator:a92f93cb66abc7b126055a88c3e9c7f6c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7674aed071c675921184e9cad1f18848"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/d63/classutils_1_1Path.html#a7674aed071c675921184e9cad1f18848">file_name</a> (bool extension=true) const</td></tr>
-<tr class="separator:a7674aed071c675921184e9cad1f18848"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6d09c3592c4ac5c0a8645a1835d0d34f"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/d63/classutils_1_1Path.html#a6d09c3592c4ac5c0a8645a1835d0d34f">file_name</a> (bool extension=true) const</td></tr>
+<tr class="separator:a6d09c3592c4ac5c0a8645a1835d0d34f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a685a4457ad6853c4e104f27d6f9cdf0f"><td class="memItemLeft" align="right" valign="top"><a id="a685a4457ad6853c4e104f27d6f9cdf0f"></a>
 bool&#160;</td><td class="memItemRight" valign="bottom"><b>exists</b> () const</td></tr>
 <tr class="separator:a685a4457ad6853c4e104f27d6f9cdf0f"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -133,9 +133,9 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>is_relative</b> () co
 <tr class="memitem:af10106c7f22530343eb6dace4c5aa0ae"><td class="memItemLeft" align="right" valign="top"><a id="af10106c7f22530343eb6dace4c5aa0ae"></a>
 bool&#160;</td><td class="memItemRight" valign="bottom"><b>is_absolute</b> () const</td></tr>
 <tr class="separator:af10106c7f22530343eb6dace4c5aa0ae"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a182033e26852a024d9a74fa87a696e45"><td class="memItemLeft" align="right" valign="top"><a id="a182033e26852a024d9a74fa87a696e45"></a>
-const std::string &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>to_string</b> ()</td></tr>
-<tr class="separator:a182033e26852a024d9a74fa87a696e45"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2b8ba097cb0da6a0f224177f87a80926"><td class="memItemLeft" align="right" valign="top"><a id="a2b8ba097cb0da6a0f224177f87a80926"></a>
+const std::string &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>to_string</b> () const</td></tr>
+<tr class="separator:a2b8ba097cb0da6a0f224177f87a80926"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8dc295590b87a959ce84773302e83578"><td class="memItemLeft" align="right" valign="top"><a id="a8dc295590b87a959ce84773302e83578"></a>
 <a class="el" href="../../d9/d63/classutils_1_1Path.html">Path</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator=</b> (const char *p)</td></tr>
 <tr class="separator:a8dc295590b87a959ce84773302e83578"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -188,26 +188,20 @@ Private Attributes</h2></td></tr>
 <tr class="memitem:a567ec7436b3d6e57a14fa8867bfdce00"><td class="memItemLeft" align="right" valign="top"><a id="a567ec7436b3d6e57a14fa8867bfdce00"></a>
 std::string&#160;</td><td class="memItemRight" valign="bottom"><b>m_path</b></td></tr>
 <tr class="separator:a567ec7436b3d6e57a14fa8867bfdce00"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="friends"></a>
-Friends</h2></td></tr>
-<tr class="memitem:ac7fb093b2a174ecaf6de71271bbabe56"><td class="memItemLeft" align="right" valign="top"><a id="ac7fb093b2a174ecaf6de71271bbabe56"></a>
-std::ostream &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator&lt;&lt;</b> (std::ostream &amp;out, const <a class="el" href="../../d9/d63/classutils_1_1Path.html">Path</a> &amp;path)</td></tr>
-<tr class="separator:ac7fb093b2a174ecaf6de71271bbabe56"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>A (case-sensitive) <a class="el" href="../../d9/d63/classutils_1_1Path.html" title="A (case-sensitive) Path in a file system. ">Path</a> in a file system. </p>
 
 <p class="definition">Definition at line <a class="el" href="../../df/d6f/Path_8h_source.html#l00015">15</a> of file <a class="el" href="../../df/d6f/Path_8h_source.html">Path.h</a>.</p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
-<a id="a7674aed071c675921184e9cad1f18848"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a7674aed071c675921184e9cad1f18848">&#9670;&nbsp;</a></span>file_name()</h2>
+<a id="a6d09c3592c4ac5c0a8645a1835d0d34f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6d09c3592c4ac5c0a8645a1835d0d34f">&#9670;&nbsp;</a></span>file_name()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">std::string utils::Path::file_name </td>
+          <td class="memname">string utils::Path::file_name </td>
           <td>(</td>
           <td class="paramtype">bool&#160;</td>
           <td class="paramname"><em>extension</em> = <code>true</code></td><td>)</td>
@@ -218,29 +212,7 @@ std::ostream &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operato
 <p>Returns the last componenet (file or directory) name of the path</p>
 <p>When extension=false, the extension is dropped from the returned string </p>
 
-<p class="definition">Definition at line <a class="el" href="../../d5/dbb/Path_8cpp_source.html#l00063">63</a> of file <a class="el" href="../../d5/dbb/Path_8cpp_source.html">Path.cpp</a>.</p>
-
-</div>
-</div>
-<a id="a92f93cb66abc7b126055a88c3e9c7f6c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a92f93cb66abc7b126055a88c3e9c7f6c">&#9670;&nbsp;</a></span>parent()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="../../d9/d63/classutils_1_1Path.html">Path</a> utils::Path::parent </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td> const</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Returns the folder containing this path. </p>
-<dl class="todo"><dt><b><a class="el" href="../../dd/da0/todo.html#_todo000012">Todo:</a></b></dt><dd>Make work for relative paths </dd></dl>
-
-<p class="definition">Definition at line <a class="el" href="../../d5/dbb/Path_8cpp_source.html#l00055">55</a> of file <a class="el" href="../../d5/dbb/Path_8cpp_source.html">Path.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d5/dbb/Path_8cpp_source.html#l00062">62</a> of file <a class="el" href="../../d5/dbb/Path_8cpp_source.html">Path.cpp</a>.</p>
 
 </div>
 </div>
