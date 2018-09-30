@@ -13,7 +13,7 @@ Utility | Short Descriptions
 TypeMap | A map that can store one value of each type (one `int`, one `MyClass`, one `int&`, etc.)
 Wrapper | A template for creating wrappers that inherit operations from the inner type (e.g. `Wrapper<int>` can be added and subtracted and whatnot, and `Wrapper<std::string>` can be added but not subtracted)
 Json | A type for storing an arbitrary JSON value.
-Path | A type representating a path in an OS-independent way (disclaimer: not tested on Windows)
+Path | A type representating a path in an OS-independent way
 
 You can also check out the [documentation](https://nivent.github.io/utilities/html/index.html) for even more information.
 

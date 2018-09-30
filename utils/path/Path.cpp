@@ -51,31 +51,34 @@ namespace utils {
 
 		return ret;
 	}
-	/// \todo Make work for relative paths
 	Path Path::parent() const {
 		Path ret = resolve();
 		do {
-			int pos = ret.m_path.rfind("/", ends_with(ret.m_path, "/") ? ret.m_path.size()-2 : std::string::npos);
+			int pos = ret.m_path.rfind("/", ends_with(ret.m_path, "/") ? ret.m_path.size()-2 : string::npos);
 			ret.m_path.resize(pos);
 		} while (ret.m_path.back() == '/');
 		return ret;
 	}
-	std::string Path::file_name(bool extension) const {
+	string Path::file_name(bool extension) const {
 		int pos = m_path.rfind('/');
-		std::string end = m_path.substr(pos+1);
+		string end = m_path.substr(pos+1);
 		if (extension) return end;
 		pos = end.rfind('.');
 		return end.substr(0, pos);
 	}
 	bool Path::exists() const {
-		return std::ifstream(m_path).good();
+		#ifdef _UTILS_UNIX
+			struct stat s;
+			return stat(m_path.c_str(), &s) == 0;
+		#elif _UTILS_WINDOWS
+			return GetFileAttributes(m_path.c_str()) != INVALID_FILE_ATTRIBUTES;
+		#endif
 	}
 	bool Path::is_file() const {
 		// Technically wrong because of symlinks and whatnot
 		return exists() && !is_directory();
 	}
 	bool Path::is_directory() const {
-		if (!exists()) return false;
 		#ifdef _UTILS_UNIX
 			struct stat s;
 			if (stat(m_path.c_str(), &s) == 0) {
@@ -90,7 +93,7 @@ namespace utils {
 	bool Path::is_absolute() const {
 		if (m_path.empty()) return false;
 		int pos = m_path.find('/');
-		std::string root = m_path.substr(0, pos);
+		string root = m_path.substr(0, pos);
 		return root.empty() || (root.size() == 2 && root[1] == ':');
 	}
 	bool Path::operator==(const char* p) const {
@@ -112,7 +115,7 @@ namespace utils {
 		return ret;
 	}
 
-	std::ostream& operator<<(std::ostream& out, const Path& path) {
-		return out<<path.m_path;
+	ostream& operator<<(ostream& out, const Path& path) {
+		return out<<path.to_string();
 	}
 }

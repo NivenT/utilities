@@ -84,7 +84,7 @@ namespace utils {
 				#ifdef _UTILS_UNIX
 					return m_node.e == rhs.m_node.e;
 				#elif _UTILS_WINDOWS
-					return m_node.d == rhs.m_node.d;
+					return strcmp(m_node.d.cFileName, rhs.m_node.d.cFileName) == 0;
 				#endif
 			}
 			bool operator!=(const iterator& rhs) const {
@@ -99,7 +99,8 @@ namespace utils {
 						m_node.d = opendir(m_path->m_path.c_str());
 						m_node.e = readdir(m_node.d);
 					#elif _UTILS_WINDOWS
-						m_node.h = FindFirstFile(m_path->m_path.c_str(), &m_node.d);
+						std::string pat = m_path->m_path + "/*";
+						m_node.h = FindFirstFile(pat.c_str(), &m_node.d);
 					#endif
 				}
 			}
@@ -143,7 +144,7 @@ namespace utils {
 		bool is_relative() const { return !is_absolute(); }
 		bool is_absolute() const;
 
-		const std::string& to_string() { return m_path; }
+		const std::string& to_string() const { return m_path; }
 
 		Path& operator=(const char* p) { m_path = p; return *this; }
 		Path& operator=(const std::string& p) { return operator=(p.c_str()); }
@@ -160,8 +161,6 @@ namespace utils {
 
 		Path::iterator begin() const;
 		Path::iterator end() const;
-
-		friend std::ostream& operator<<(std::ostream& out, const Path& path);
 	};
 }
 

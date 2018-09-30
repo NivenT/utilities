@@ -23,13 +23,11 @@ int main(int argc, char* argv[]) {
     assert(q.parent() == "folder");
     assert(q.parent() == "folder/");
     assert(q.parent() == "folder/./");
-    assert(q.parent().is_directory());	
-
+    assert(q.parent().is_directory());
     assert(Path("folder") + "file.txt" == q);
     assert(q.is_relative());
 
-    Path r = "/home";
-    assert(r.is_absolute());
+    assert(Path("/home").is_absolute());
     assert(Path("C:\\").is_absolute());
 
     Path cwd = Path::cwd();
