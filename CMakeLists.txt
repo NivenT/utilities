@@ -54,7 +54,7 @@ option(UTILS_BUILD_TESTS "Turn off if you don't want to build the tests" ON)
 set(EXECUTABLE_OUTPUT_PATH ${CMAKE_BINARY_DIR}/bin)
 set(LIBRARY_OUTPUT_PATH ${CMAKE_BINARY_DIR}/lib)
 
-add_library(common ${CMAKE_CURRENT_SOURCE_DIR}/common.cpp)
+add_library(common ${CMAKE_CURRENT_SOURCE_DIR}/utils/common.cpp)
 
 set(UTILS_LIBRARIES common CACHE INTERNAL "")
 set(UTILS_INCLUDE_DIR ${CMAKE_CURRENT_SOURCE_DIR} CACHE INTERNAL "")
@@ -71,12 +71,11 @@ foreach(dir ${DIRS})
   file(GLOB SRCS RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} utils/${dir}/*.cpp)
   if(SRCS)
     add_library(${dir} ${SRCS})
-    target_include_directories(${dir} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
+    target_include_directories(${dir} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/utils)
 
     set(UTILS_LIBRARIES ${UTILS_LIBRARIES} ${dir} CACHE INTERNAL "")
   endif()
-  set(UTILS_INCLUDE_DIR ${UTILS_INCLUDE_DIR} ${CMAKE_CURRENT_SOURCE_DIR}/utils/${dir} CACHE INTERNAL "")
-
+  
   if (${UTILS_BUILD_TESTS})
       file(GLOB TEST_SRCS RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} utils/${dir}/tests/*.cpp)
       add_executable("${dir}_tests" ${TEST_SRCS})
@@ -85,7 +84,7 @@ foreach(dir ${DIRS})
       else()
         target_link_libraries("${dir}_tests" common)
       endif()
-      target_include_directories("${dir}_tests" PUBLIC ${CMAKE_CURRENT_SOURCE_DIR} ${CMAKE_CURRENT_SOURCE_DIR}/utils/${dir})
+      target_include_directories("${dir}_tests" PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/utils ${CMAKE_CURRENT_SOURCE_DIR}/utils/${dir})
 
       set_target_properties("${dir}_tests" PROPERTIES
         RUNTIME_OUTPUT_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/tests_bin/${dir})
