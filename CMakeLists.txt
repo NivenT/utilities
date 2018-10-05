@@ -49,13 +49,20 @@ else()
   set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -D_UTILS_WINDOWS" CACHE INTERNAL "")
 endif()
 
+option(UTILS_BUILD_TESTS "Turn off if you don't want to build the tests" ON)
+
 set(EXECUTABLE_OUTPUT_PATH ${CMAKE_BINARY_DIR}/bin)
 set(LIBRARY_OUTPUT_PATH ${CMAKE_BINARY_DIR}/lib)
 
-
 add_library(common ${CMAKE_CURRENT_SOURCE_DIR}/common.cpp)
 
-enable_testing()
+set(UTILS_LIBRARIES common CACHE INTERNAL "")
+set(UTILS_INCLUDE_DIR ${CMAKE_CURRENT_SOURCE_DIR} CACHE INTERNAL "")
+
+if (${UTILS_BUILD_TESTS})
+    message(STATUS "Building tests")
+    enable_testing()
+endif()
 
 subdirlist(DIRS ${CMAKE_CURRENT_SOURCE_DIR}/utils)
 foreach(dir ${DIRS})
@@ -65,27 +72,32 @@ foreach(dir ${DIRS})
   if(SRCS)
     add_library(${dir} ${SRCS})
     target_include_directories(${dir} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
+
+    set(UTILS_LIBRARIES ${UTILS_LIBRARIES} ${dir} CACHE INTERNAL "")
   endif()
+  set(UTILS_INCLUDE_DIR ${UTILS_INCLUDE_DIR} ${CMAKE_CURRENT_SOURCE_DIR}/utils/${dir} CACHE INTERNAL "")
 
-  file(GLOB TEST_SRCS RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} utils/${dir}/tests/*.cpp)
-  add_executable("${dir}_tests" ${TEST_SRCS})
-  if (SRCS)
-    target_link_libraries("${dir}_tests" ${dir} common)
-  else()
-    target_link_libraries("${dir}_tests" common)
-  endif()
-  target_include_directories("${dir}_tests" PUBLIC ${CMAKE_CURRENT_SOURCE_DIR} ${CMAKE_CURRENT_SOURCE_DIR}/utils/${dir})
+  if (${UTILS_BUILD_TESTS})
+      file(GLOB TEST_SRCS RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} utils/${dir}/tests/*.cpp)
+      add_executable("${dir}_tests" ${TEST_SRCS})
+      if (SRCS)
+        target_link_libraries("${dir}_tests" ${dir} common)
+      else()
+        target_link_libraries("${dir}_tests" common)
+      endif()
+      target_include_directories("${dir}_tests" PUBLIC ${CMAKE_CURRENT_SOURCE_DIR} ${CMAKE_CURRENT_SOURCE_DIR}/utils/${dir})
 
-  set_target_properties("${dir}_tests" PROPERTIES
-    RUNTIME_OUTPUT_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/tests_bin/${dir})
-  add_test(NAME "${dir}_tests"
-            WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/tests_bin/${dir}
-            COMMAND ${CMAKE_CURRENT_BINARY_DIR}/tests_bin/${dir}/${dir}_tests)
+      set_target_properties("${dir}_tests" PROPERTIES
+        RUNTIME_OUTPUT_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/tests_bin/${dir})
+      add_test(NAME "${dir}_tests"
+                WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/tests_bin/${dir}
+                COMMAND ${CMAKE_CURRENT_BINARY_DIR}/tests_bin/${dir}/${dir}_tests)
 
-  complement_file_list(RSRCS ${CMAKE_CURRENT_SOURCE_DIR}/utils/${dir}/tests "*.cpp" "*.h")
-  foreach(rsrc ${RSRCS})
-    message(STATUS "Copying ${rsrc}")
-    configure_file(${CMAKE_CURRENT_SOURCE_DIR}/utils/${dir}/tests/${rsrc}
-      ${CMAKE_CURRENT_BINARY_DIR}/tests_bin/${dir}/${rsrc} COPYONLY)
-  endforeach(rsrc)
+      complement_file_list(RSRCS ${CMAKE_CURRENT_SOURCE_DIR}/utils/${dir}/tests "*.cpp" "*.h")
+      foreach(rsrc ${RSRCS})
+        message(STATUS "Copying ${rsrc}")
+        configure_file(${CMAKE_CURRENT_SOURCE_DIR}/utils/${dir}/tests/${rsrc}
+          ${CMAKE_CURRENT_BINARY_DIR}/tests_bin/${dir}/${rsrc} COPYONLY)
+      endforeach(rsrc)
+    endif()
 endforeach(dir)
