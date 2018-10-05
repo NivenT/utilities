@@ -99,7 +99,8 @@ namespace utils {
     private:
         T m_data;
     public:
-        explicit Wrapper(T data) : m_data(data) {}
+        /// Guess I'm sacrificing safety for conveinence...
+        /* explicit */ Wrapper(T data = T()) : m_data(data) {}
         const T& to_inner() const { return m_data; }
         T& to_inner() { return m_data; }
         template<typename U>
