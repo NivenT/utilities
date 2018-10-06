@@ -99,8 +99,7 @@ namespace utils {
     private:
         T m_data;
     public:
-        /// Guess I'm sacrificing safety for conveinence...
-        /* explicit */ Wrapper(T data = T()) : m_data(data) {}
+        Wrapper(T data = T()) : m_data(data) {}
         const T& to_inner() const { return m_data; }
         T& to_inner() { return m_data; }
         template<typename U>
@@ -162,12 +161,30 @@ namespace utils {
     std::ostream& operator<<(std::ostream& lhs, const Wrapper<T, TAG>& w) {
         return lhs<<w.to_inner();
     }
+
+    /// A generic class for creating wrappers around (non-reference) types
+    ///
+    /// Automatically inherts all operations available to the inner type T.
+    /// This includes the ability to print it using e.g. cout<<
+    ///
+    /// usage: using Name = utils::Wrapper<std::string, struct NameTag>
+    template<typename T, typename TAG>
+    class StrongWrapper : public Wrapper<T, TAG> {
+    public:
+         explicit  StrongWrapper(T data) : Wrapper<T, TAG>(data) {}
+    };
 }
 
 namespace std {
     template<typename T, typename TAG>
     struct hash<utils::Wrapper<T, TAG>> {
         std::size_t operator()(const utils::Wrapper<T, TAG>& w) const {
+            return std::hash<T>()(w.to_inner());
+        }
+    };
+    template<typename T, typename TAG>
+    struct hash<utils::StrongWrapper<T, TAG>> {
+        std::size_t operator()(const utils::StrongWrapper<T, TAG>& w) const {
             return std::hash<T>()(w.to_inner());
         }
     };

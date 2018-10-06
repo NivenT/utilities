@@ -7,16 +7,21 @@
 using namespace std;
 using namespace utils;
 
-using Inches = Wrapper<int, struct InchesTag>;
+// StrongWrapper has an explicit constructor
+using Inches = StrongWrapper<int, struct InchesTag>;
+// Wrappers do not have explicit constructors
 using Feet = Wrapper<int, struct FeetTag>;
-using Name = Wrapper<string, struct NameTag>;
+using Name = StrongWrapper<string, struct NameTag>;
 
 int main(int argc, char* argv[]) {
     cout<<"Running Wrapper tests..."<<endl;
 
     Inches a(12);
-    Feet b(1);
+    Feet b;
     Name c("Steve");
+
+    b = 1;
+
     // You can cout<< a wrapper
     assert(utils::to_string(a) == "12");
     assert(utils::to_string(b) == "1");

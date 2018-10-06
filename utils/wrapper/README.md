@@ -8,10 +8,10 @@ This provides a templated class for creating generic wrappers. The wrappers crea
 #include <Wrapper.h>
 
 using namespace std;
-using Feet = utils::Wrapper<float, struct FTag>;
-using Yards = utils::Wrapper<float, struct MTag>;
-using Seconds = utils::Wrapper<float, struct STag>;
-using YPS = utils::Wrapper<float, struct MPSTag>; // Yards per second
+using Feet = utils::StrongWrapper<float, struct FTag>;
+using Yards = utils::StrongWrapper<float, struct YTag>;
+using Seconds = utils::StrongWrapper<float, struct STag>;
+using YPS = utils::StrongWrapper<float, struct YPSTag>; // Yards per second
 
 Yards to_yards(Feet f) {
     return Yards(f.to_inner() / 3);
@@ -34,6 +34,8 @@ int main() {
 ```
 
 ## Details
-* Wrappers must be constructed explicitly so `Feet f = 10` will cause the compiler to yell at you.
-* `Wrapper<T, TAG>::inner` will return the type being wrapped
+* StrongWrappers must be constructed explicitly so `Feet f = 10` will cause the compiler to yell at you.
+    * There's also a `Wrapper<T, TAG>` type you can use instead that allows implicit construction and conversion
+* `Wrapper<T, TAG>` requires that `T` has a default constructor.
+* `StrongWrapper<T, TAG>::inner` will return the type being wrapped
 * At the moment, the inner type cannot be a reference.
