@@ -118,6 +118,9 @@ namespace utils {
             default: return 0;
         }
     }
+    bool Json::has_key(const std::string& key) const {
+        return m_type == OBJECT ? m_obj->find(key) != m_obj->end() : false;
+    }
     bool Json::resize(size_t size) {
         if (m_type == NONE) {
             m_type = ARRAY;

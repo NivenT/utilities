@@ -349,13 +349,14 @@ namespace utils {
 		uint64_t as_uint() const { return as_number().as_uint(); }
 		int64_t as_int() const { return as_number().as_int(); }
 		double as_float() const { return as_number().as_float(); }
-		double as_double() const { return m_num.as_double(); }
+		double as_double() const { return as_number().as_double(); }
 		JsonObject as_object() const { return *m_obj; }
 		JsonArray as_array() const { return *m_arr; }
 		bool as_bool() const;
 
 		std::size_t size() const;
 		bool is_empty() const { return size() == 0; }
+		bool has_key(const std::string& key) const;
 		/// Returns false if m_type is not NONE or ARRAY
 		///
 		/// If m_type == NONE, converts this into an ARRAY
