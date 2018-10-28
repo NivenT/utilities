@@ -7,9 +7,6 @@
 using namespace std;
 
 namespace utils {
-    int func(string str) {
-        return str.size();
-    }
     Json::Json(const initializer_list<Json>& data) : m_type(NONE) {
         if (data.begin() == data.end()) return;
         bool is_object = all_of(data.begin(), data.end(), [](const Json& elem) {
