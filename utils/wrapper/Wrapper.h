@@ -167,7 +167,9 @@ namespace utils {
     /// Automatically inherts all operations available to the inner type T.
     /// This includes the ability to print it using e.g. cout<<
     ///
-    /// usage: using Name = utils::Wrapper<std::string, struct NameTag>
+    /// Must be explicitly constructed.
+    ///
+    /// usage: using Name = utils::StrongWrapper<std::string, struct NameTag>
     template<typename T, typename TAG>
     class StrongWrapper : public Wrapper<T, TAG> {
     public:

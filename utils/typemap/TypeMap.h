@@ -10,9 +10,9 @@ namespace utils {
     /// Struct for storing basic information about a type used by TypeMap
     struct TypeInfo {
     private:
-        static const std::size_t TYPEINFO_POINTER_BIT   = 0b0000'0001;
-        static const std::size_t TYPEINFO_SMALL_BIT     = 0b0000'0010;
-        static const std::size_t TYPEINFO_REFERENCE_BIT = 0b0000'0100;
+        static const unsigned char TYPEINFO_POINTER_BIT   = 0b0000'0001;
+        static const unsigned char TYPEINFO_SMALL_BIT     = 0b0000'0010;
+        static const unsigned char TYPEINFO_REFERENCE_BIT = 0b0000'0100;
 
         TypeInfo() {}
     public:
@@ -124,7 +124,7 @@ namespace utils {
         if (info.is_reference()) {
             m_map[info] = std::addressof(data);
         } else if (info.is_small()) {
-            memcpy(&m_map[info], &data, sizeof(T));
+            new(&m_map[info]) type(data);
         } else {
             m_map[info] = new type(data);
         }
