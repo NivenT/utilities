@@ -102,6 +102,7 @@ namespace utils {
         Wrapper(T data = T()) : m_data(data) {}
         const T& to_inner() const { return m_data; }
         T& to_inner() { return m_data; }
+        explicit operator T() const { return to_inner(); }
         template<typename U>
         auto operator==(const U& rhs) const -> decltype(std::enable_if_t<check::EqualsExists<T, U>::value, bool>{}) {
             return m_data == rhs;
@@ -173,7 +174,7 @@ namespace utils {
     template<typename T, typename TAG>
     class StrongWrapper : public Wrapper<T, TAG> {
     public:
-         explicit  StrongWrapper(T data) : Wrapper<T, TAG>(data) {}
+         explicit StrongWrapper(T data) : Wrapper<T, TAG>(data) {}
     };
 }
 

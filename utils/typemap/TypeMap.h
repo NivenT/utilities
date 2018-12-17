@@ -109,9 +109,9 @@ namespace utils {
         void clear();
 
         iterator begin() { return m_map.begin(); }
-        const_iterator cbegin() { return m_map.cbegin(); }
+        const_iterator cbegin() const { return m_map.cbegin(); }
         iterator end() { return m_map.end(); }
-        const_iterator cend() { return m_map.cend(); }
+        const_iterator cend() const { return m_map.cend(); }
 
     };
     template<typename T>
