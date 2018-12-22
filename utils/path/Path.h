@@ -151,6 +151,12 @@ namespace utils {
 		bool operator==(const char* p) const;
 		bool operator==(const Path& p) const { return *this == p.m_path; }
 		bool operator==(const std::string& p) const { return operator==(p.c_str()); }
+		bool operator!=(const char* p) const { return !operator==(p); }
+		bool operator!=(const Path& p) const { return !operator==(p); }
+		bool operator!=(const std::string& p) const { return !operator==(p); }
+
+		bool operator<(const Path& p) const { return resolve().to_string() < p.resolve().to_string(); }
+		bool operator<=(const Path& p) const { return operator==(p) || operator<(p); }
 
 		Path operator+(const char* p) const;
 		Path& operator+=(const char* p) { return *this = *this + p; }
@@ -162,6 +168,15 @@ namespace utils {
 		Path::iterator begin() const;
 		Path::iterator end() const;
 	};
+}
+
+namespace std {
+    template<>
+    struct hash<utils::Path> {
+        std::size_t operator()(const utils::Path& path) const {
+            return std::hash<std::string>()(path.resolve().to_string());
+        }
+    };
 }
 
 #endif // UTILS_PATH_H_INCLUDED
