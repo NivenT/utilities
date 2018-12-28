@@ -2,6 +2,7 @@
 #define UTILS_PATH_H_INCLUDED
 
 #include <cassert>
+#include <ostream>
 #ifdef _UTILS_UNIX
 	#include <dirent.h>
 #elif _UTILS_WINDOWS
