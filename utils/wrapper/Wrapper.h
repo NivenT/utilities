@@ -179,6 +179,7 @@ namespace utils {
 }
 
 namespace std {
+    /// \todo SFINAE or if constexpr or whatever
     template<typename T, typename TAG>
     struct hash<utils::Wrapper<T, TAG>> {
         std::size_t operator()(const utils::Wrapper<T, TAG>& w) const {
