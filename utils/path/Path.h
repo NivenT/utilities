@@ -131,7 +131,7 @@ namespace utils {
 		Path resolve() const;
 		/// Returns the folder containing this path
 		Path parent() const;
-		/// Returns the last componenet (file or directory) name of the path
+		/// Returns the last component (file or directory) name of the path
 		///
 		/// When extension=false, the extension is dropped from the returned string
 		std::string file_name(bool extension = true) const;
