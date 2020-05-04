@@ -7,14 +7,14 @@
     template<typename T, typename U> Nop operator op(const T&, const U&); \
     template<typename T, typename U=T> \
     struct name##Exists { \
-        enum { value = !::std::is_same<decltype(*(T*)(0) op *(U*)(0)), Nop>::value }; \
+        enum { value = !::std::is_same<decltype(std::declval<T>() op std::declval<U>()), Nop>::value }; \
     };
 
 #define UTILS_UNARY_OP_CHECKER(name, op) \
     template<typename T> Nop operator op(T&); \
     template<typename T> \
     struct name##Exists { \
-        enum { value = !::std::is_same<decltype(op *(T*)(0)), Nop>::value }; \
+        enum { value = !::std::is_same<decltype(op std::declval<T>()), Nop>::value }; \
     };
 
 #define UTILS_IMPL_WRAPPER_OP(name, op)  \
