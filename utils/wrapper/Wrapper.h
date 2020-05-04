@@ -14,7 +14,7 @@
     template<typename T> Nop operator op(T&); \
     template<typename T> \
     struct name##Exists { \
-        enum { value = !::std::is_same<decltype(op std::declval<T>()), Nop>::value }; \
+        enum { value = !::std::is_same<decltype(op *std::declval<T*>()), Nop>::value }; \
     };
 
 #define UTILS_IMPL_WRAPPER_OP(name, op)  \
