@@ -1,10 +1,12 @@
+#include <fstream>
+
 #include "common.h"
 
 using namespace std;
 
 namespace utils {
     bool starts_with(const string& str, const string& prefix) {
-        return str.find(prefix) == 0;
+        return str.size() >= prefix.size() && str.find(prefix) == 0;
     }
     bool ends_with(const string& str, const string& suffix) {
         return str.size() >= suffix.size() && str.rfind(suffix) == str.size() - suffix.size();
@@ -36,7 +38,25 @@ namespace utils {
         auto begin = str.find_first_not_of(front_trash);
         auto end = str.find_last_not_of(back_trash);
 
+        if (begin == string::npos) return "";
         return str.substr(begin, end-begin+1);
+    }
+    string read_file(const string_view path) {
+        string contents;
+
+        // This call to .data() is kinda sketch
+        ifstream file(path.data(), ios::binary);
+        if (file.fail()) return "";
+        file.seekg(0, ios::end);
+        unsigned int file_size = file.tellg();
+        file.seekg(0, ios::beg);
+        file_size -= file.tellg();
+
+        contents.resize(file_size);
+        file.read((char*)&contents[0], file_size);
+        file.close();
+
+        return contents;
     }
     vector<string> split(const string& str, char delim) {    
         vector<string> items; 
