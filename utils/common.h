@@ -25,6 +25,8 @@ namespace utils {
     extern std::vector<std::string> split(const std::string& str, char delim);
     /// Reads the contents of a file into a string
     extern std::string read_file(const std::string_view path);
+    /// Stolen from Boost
+    extern std::size_t hash_combine(std::size_t lhs, std::size_t rhs);
 
     /// converts input to a std::string
     template<class T>

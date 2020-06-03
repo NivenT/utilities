@@ -58,6 +58,9 @@ namespace utils {
 
         return contents;
     }
+    std::size_t hash_combine(size_t lhs, size_t rhs) {
+        return lhs ^ (rhs + 0x9e3779b9 + (lhs<<6) + (lhs>>2));
+    }
     vector<string> split(const string& str, char delim) {    
         vector<string> items; 
         stringstream ss(str);  
