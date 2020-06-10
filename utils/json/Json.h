@@ -291,6 +291,7 @@ namespace utils {
 		Json(const char* str) : m_type(STRING), m_str(strdup(str)) {}
 		Json(JsonNum num) : m_type(NUMBER), m_num(num) {}
 		Json(double num) : m_type(NUMBER), m_num(num) {}
+		Json(std::size_t num) : m_type(NUMBER), m_num(num) {}
 		Json(int num) : m_type(NUMBER), m_num(num) {}
 		Json(JsonObject obj) : m_type(OBJECT), m_obj(new JsonObject(obj)) {}
 		Json(JsonArray arr) : m_type(ARRAY), m_arr(new JsonArray(arr)) {}
