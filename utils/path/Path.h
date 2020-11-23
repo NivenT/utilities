@@ -146,6 +146,7 @@ namespace utils {
 		bool is_absolute() const;
 
 		const std::string& to_string() const { return m_path; }
+		const char* to_cstr() const { return m_path.c_str(); }
 
 		Path& operator=(const char* p) { m_path = p; return *this; }
 		Path& operator=(const std::string& p) { return operator=(p.c_str()); }
